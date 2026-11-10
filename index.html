@@ -1,87 +1,38 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Converta documentos DOCX para DOC diretamente no navegador."
-    />
-    <meta name="theme-color" content="#071e63" />
-    <title>Conversor documentos Superlógica</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <main class="page-shell">
-      <section class="converter-card" aria-labelledby="page-title">
-        <h1 id="page-title">Conversor documentos <span>Superlógica</span></h1>
-        <p class="intro">
-          Transforme seu arquivo <strong>DOCX</strong> em <strong>DOC</strong>
-          de forma rápida e segura.
-        </p>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portal de ferramentas da Mapa Imobiliária.">
+  <meta name="theme-color" content="#08256f">
+  <title>Ferramentas Mapa Imobiliária</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23082066'/%3E%3Cpath d='M15 32 32 17 49 32M22 29v19h20V29M29 48V35h7v13' fill='none' stroke='white' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <img class="mapa-logo" src="assets/mapa-logo.png" alt="Mapa Imobiliária" width="447" height="112">
+  </header>
 
-        <div
-          class="drop-zone"
-          id="drop-zone"
-          role="button"
-          tabindex="0"
-          aria-controls="file-input"
-          aria-describedby="drop-hint"
-        >
-          <input
-            id="file-input"
-            type="file"
-            accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-            hidden
-          />
-          <div class="document-icon" aria-hidden="true">
-            <span></span>
-          </div>
-          <p class="drop-title">Arraste seu arquivo DOCX aqui</p>
-          <p class="drop-divider"><span>ou</span></p>
-          <span class="choose-button">Escolher arquivo</span>
-          <p class="drop-hint" id="drop-hint">Máximo de 30 MB</p>
-        </div>
+  <main>
+    <section class="tool-grid" aria-label="Ferramentas disponíveis">
+      <a class="tool-card" href="ferramentas/conversor-doc/index.html" aria-label="Abrir Conversor de .DOC">
+        <span class="thumbnail-wrap">
+          <img src="assets/thumbnail-conversor-doc.png" alt="Conversor de DOC com a identidade da Superlógica" width="1536" height="864">
+        </span>
+      </a>
 
-        <div class="file-card" id="file-card" hidden>
-          <div class="file-badge" aria-hidden="true">DOCX</div>
-          <div class="file-copy">
-            <strong id="file-name"></strong>
-            <span id="file-size"></span>
-          </div>
-          <button class="remove-button" id="remove-button" type="button">
-            Remover
-          </button>
-        </div>
+      <a class="tool-card" href="ferramentas/zipador/index.html" aria-label="Abrir Zipador de arquivos">
+        <span class="thumbnail-wrap">
+          <img src="assets/thumbnail-zipador-arquivos.png" alt="Ícone de arquivo ZIP com a identidade da Mapa" width="1536" height="864">
+        </span>
+      </a>
+    </section>
+  </main>
 
-        <button class="convert-button" id="convert-button" type="button" disabled>
-          <span class="button-label">Converter para DOC</span>
-          <span class="button-arrow" aria-hidden="true">→</span>
-        </button>
-
-        <div class="status-card" id="status-card" role="status" aria-live="polite" hidden>
-          <div class="status-icon" id="status-icon" aria-hidden="true">✓</div>
-          <div class="status-copy">
-            <strong id="status-title"></strong>
-            <span id="status-message"></span>
-          </div>
-          <button class="download-again" id="download-again" type="button" hidden>
-            Baixar novamente
-          </button>
-        </div>
-
-        <div class="privacy-note">
-          <span class="lock-icon" aria-hidden="true"></span>
-          <p>
-            <strong>Conversão local e segura.</strong>
-            Seu arquivo não sai deste computador.
-          </p>
-        </div>
-      </section>
-
-    </main>
-
-    <script src="vendor/mammoth.browser.min.js"></script>
-    <script src="app.js"></script>
-  </body>
+  <footer>
+    <span class="security-icon" aria-hidden="true">✓</span>
+    <span><strong>Uso local e seguro.</strong> Seus arquivos não são enviados para servidores.</span>
+  </footer>
+</body>
 </html>

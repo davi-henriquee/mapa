@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Organize imagens e documentos e baixe tudo em um ZIP.">
+  <title>Zipador de arquivos | Mapa Imobiliária</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23082066'/%3E%3Cpath d='M15 32 32 17 49 32M22 29v19h20V29M29 48V35h7v13' fill='none' stroke='white' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="zip.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a href="../../index.html" class="home-link" aria-label="Voltar ao menu principal"><img src="../../assets/home-icon.png" alt="" width="512" height="512"></a><img class="mapa-logo" src="../../assets/mapa-logo.png" alt="Mapa Imobiliária" width="447" height="112"></header>
+  <main>
+    <section class="workspace" aria-label="Zipador de arquivos">
+      <form id="zip-form">
+        <fieldset id="controls">
+          <div class="section-heading"><span class="step">01</span><h2>Identifique o imóvel</h2></div>
+          <div class="fields">
+            <div><label for="property-number">Número do imóvel <span aria-hidden="true">*</span></label><input id="property-number" name="property" type="text" placeholder="Ex.: 10245" maxlength="60" required autocomplete="off"></div>
+            <div><label for="description">Descrição <span class="optional">opcional</span></label><input id="description" name="description" type="text" placeholder="Ex.: Apartamento Centro" maxlength="100" autocomplete="off"></div>
+          </div>
+          <div class="section-heading photos-heading"><span class="step">02</span><h2>Adicione os arquivos</h2><span id="count" class="counter">0 itens</span></div>
+          <input id="file-input" class="visually-hidden" type="file" multiple tabindex="-1" aria-label="Selecionar arquivos">
+          <div id="drop-zone" class="drop-zone">
+            <span class="document-icon" aria-hidden="true"><span></span></span>
+            <p class="drop-title">Arraste suas imagens e documentos aqui</p>
+            <p class="drop-divider"><span>ou</span></p>
+            <button id="add-files" class="choose-button" type="button">Escolher arquivo</button>
+            <p class="drop-hint">Máximo 200 itens</p>
+          </div>
+          <div id="photos-toolbar" class="photos-toolbar" hidden><span id="total-size"></span><button id="clear-files" type="button" class="text-button">Remover todas</button></div>
+          <ul id="photo-grid" class="photo-grid" aria-label="Arquivos selecionados"></ul>
+          <div class="compression">
+            <label class="switch-label"><input id="compress" type="checkbox" checked><span class="switch" aria-hidden="true"></span><span><strong>Deixar as fotos mais leves</strong><small id="compression-summary">Até 1.920 px · qualidade 80%</small></span></label>
+            <button id="settings-toggle" class="text-button" type="button" aria-expanded="false" aria-controls="settings">Ajustar</button>
+          </div>
+          <div id="settings" class="settings" hidden>
+            <div><label for="max-size">Lado maior da imagem</label><select id="max-size"><option value="1280">1.280 px · mais compacto</option><option value="1920" selected>1.920 px · recomendado</option><option value="2560">2.560 px · mais detalhes</option></select></div>
+            <div><label for="quality">Qualidade JPEG</label><select id="quality"><option value="0.65">65% · mais compacto</option><option value="0.8" selected>80% · recomendado</option><option value="0.9">90% · mais detalhes</option></select></div>
+            <p>As imagens são convertidas para JPEG, sem ampliar. Transparências ficam brancas. Se a conversão não economizar espaço, o original é mantido.</p>
+          </div>
+          <button id="zip-button" class="primary zip-action" type="submit"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v4h14v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Zipar e baixar arquivos</span></button>
+        </fieldset>
+        <div id="progress-area" class="progress-area" hidden><progress id="progress" max="100" value="0" aria-label="Progresso da criação do ZIP"></progress><div><span id="progress-text"></span><button id="cancel" type="button" class="text-button">Cancelar</button></div></div>
+        <p id="message" class="message" role="status" aria-live="polite" hidden></p>
+        <a id="download-again" class="download-again" hidden>Baixar ZIP novamente ↗</a>
+      </form>
+      <footer class="privacy"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2 4 4v5c0 4 6 7 6 7s6-3 6-7V4l-6-2Z" stroke="currentColor" stroke-width="1.4"/><path d="m7 9 2 2 4-4" stroke="currentColor" stroke-width="1.4"/></svg>Seus arquivos ficam no seu dispositivo. Sempre.</footer>
+    </section>
+  </main>
+</body>
+</html>
